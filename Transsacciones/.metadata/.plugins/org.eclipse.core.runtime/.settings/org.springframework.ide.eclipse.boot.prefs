@@ -1,0 +1,16 @@
+eclipse.preferences.version=1
+org.springframework.ide.eclipse.boot.wizard.PopularityTracker.data-jpa=1
+org.springframework.ide.eclipse.boot.wizard.PopularityTracker.postgresql=1
+org.springframework.ide.eclipse.boot.wizard.PopularityTracker.web=1
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.artifactId=deviuco-transacciones
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.bootVersion=3.3.4
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.description=Microservicio para soportar los caso de uso del contexto transacciones
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.groupId=co.edu.uco.deviuco
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.javaVersion=23
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.language=java
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.name=deviuco
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.packageName=co.edu.uco.deviuco.transacciones
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.packaging=jar
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.type=MAVEN
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.version=0.0.1-SNAPSHOT
+org.springframework.ide.eclipse.boot.wizard.initializr.url=https\://start.spring.io\n

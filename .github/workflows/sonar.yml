@@ -8,7 +8,6 @@ on:
       - master
 
 jobs:
-  # Job para el microservicio de usuarios
   sonarcloud-usuarios:
     runs-on: ubuntu-latest
 
@@ -24,18 +23,17 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/.m2/repository
-          key: ${{ runner.os }}-m2-${{ hashFiles('usuarios/pom.xml') }}
+          key: ${{ runner.os }}-m2-${{ hashFiles('Usuarios/pom.xml') }}
           restore-keys: |
             ${{ runner.os }}-m2
 
       - name: Build and analyze on SonarCloud - Usuarios
-        working-directory: ./usuarios
+        working-directory: ./Usuarios
         run: mvn clean verify sonar:sonar
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: https://sonarcloud.io
 
-  # Job para el microservicio de transacciones
   sonarcloud-transacciones:
     runs-on: ubuntu-latest
 
@@ -51,12 +49,12 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/.m2/repository
-          key: ${{ runner.os }}-m2-${{ hashFiles('transacciones/pom.xml') }}
+          key: ${{ runner.os }}-m2-${{ hashFiles('Transacciones/pom.xml') }}
           restore-keys: |
             ${{ runner.os }}-m2
 
       - name: Build and analyze on SonarCloud - Transacciones
-        working-directory: ./transacciones
+        working-directory: ./Transacciones
         run: mvn clean verify sonar:sonar
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

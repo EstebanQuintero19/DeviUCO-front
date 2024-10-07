@@ -1,0 +1,34 @@
+name: SonarCloud
+on:
+  push:
+    branches:
+      - master  # Puedes cambiar la rama de acuerdo a tus necesidades
+  pull_request:
+    branches:
+      - master  # Opcional, si quieres que analice también en los PR
+
+jobs:
+  sonarcloud:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up JDK 11  # Si usas JDK 17 o 8, ajusta esta línea
+        uses: actions/setup-java@v1
+        with:
+          java-version: '11'
+
+      - name: Cache SonarCloud packages
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-m2
+
+      - name: Build and analyze on SonarCloud
+        run: mvn clean verify sonar:sonar
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: https://sonarcloud.io

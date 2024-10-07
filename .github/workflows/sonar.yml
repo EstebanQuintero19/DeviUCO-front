@@ -8,8 +8,8 @@ on:
       - master
 
 jobs:
-  # Job para el microservicio 1
-  sonarcloud-microservicio1:
+  # Job para el microservicio de usuarios
+  sonarcloud-usuarios:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,19 +24,19 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/.m2/repository
-          key: ${{ runner.os }}-m2-${{ hashFiles('microservicio1/pom.xml') }}
+          key: ${{ runner.os }}-m2-${{ hashFiles('usuarios/pom.xml') }}
           restore-keys: |
             ${{ runner.os }}-m2
 
-      - name: Build and analyze on SonarCloud - Microservicio 1
-        working-directory: ./microservicio1
+      - name: Build and analyze on SonarCloud - Usuarios
+        working-directory: ./usuarios
         run: mvn clean verify sonar:sonar
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: https://sonarcloud.io
 
-  # Job para el microservicio 2
-  sonarcloud-microservicio2:
+  # Job para el microservicio de transacciones
+  sonarcloud-transacciones:
     runs-on: ubuntu-latest
 
     steps:
@@ -51,12 +51,12 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/.m2/repository
-          key: ${{ runner.os }}-m2-${{ hashFiles('microservicio2/pom.xml') }}
+          key: ${{ runner.os }}-m2-${{ hashFiles('transacciones/pom.xml') }}
           restore-keys: |
             ${{ runner.os }}-m2
 
-      - name: Build and analyze on SonarCloud - Microservicio 2
-        working-directory: ./microservicio2
+      - name: Build and analyze on SonarCloud - Transacciones
+        working-directory: ./transacciones
         run: mvn clean verify sonar:sonar
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

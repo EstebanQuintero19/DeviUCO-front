@@ -2,19 +2,20 @@ name: SonarCloud
 on:
   push:
     branches:
-      - master  # Puedes cambiar la rama de acuerdo a tus necesidades
+      - master
   pull_request:
     branches:
-      - master  # Opcional, si quieres que analice también en los PR
+      - master
 
 jobs:
-  sonarcloud:
+  # Job para el microservicio 1
+  sonarcloud-microservicio1:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
 
-      - name: Set up JDK 11  # Si usas JDK 17 o 8, ajusta esta línea
+      - name: Set up JDK 11
         uses: actions/setup-java@v1
         with:
           java-version: '11'
@@ -23,11 +24,39 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/.m2/repository
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          key: ${{ runner.os }}-m2-${{ hashFiles('microservicio1/pom.xml') }}
           restore-keys: |
             ${{ runner.os }}-m2
 
-      - name: Build and analyze on SonarCloud
+      - name: Build and analyze on SonarCloud - Microservicio 1
+        working-directory: ./microservicio1
+        run: mvn clean verify sonar:sonar
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: https://sonarcloud.io
+
+  # Job para el microservicio 2
+  sonarcloud-microservicio2:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: '11'
+
+      - name: Cache SonarCloud packages
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-m2-${{ hashFiles('microservicio2/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-m2
+
+      - name: Build and analyze on SonarCloud - Microservicio 2
+        working-directory: ./microservicio2
         run: mvn clean verify sonar:sonar
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

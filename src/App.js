@@ -8,6 +8,7 @@ import Cuenta from './pages/account';
 import DeleteAccount from './pages/deleteAccount';
 
 
+
 function App() {
   return (
     <Router>
@@ -15,7 +16,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/cuenta" element={<Cuenta />} /> {/* Página de cuenta */}
+        <Route path="/cuenta" element={<Cuenta />} />
+        <Route path="/delete-account" element={<DeleteAccount />} />  
       </Routes>
     </Router>
   );

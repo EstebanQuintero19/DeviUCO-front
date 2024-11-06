@@ -7,16 +7,16 @@ export default function Home() {
     <div 
       className="min-h-screen flex flex-col items-center justify-center relative"
       style={{
-        backgroundImage: "url('/assets/foto-innova-UCO.jpeg.svg')",
+        backgroundImage: "url('/assets/foto-innova-UCO.jpeg')", // Ajusta la extensión según el archivo real
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
     >
       {/* Overlay */}
-      <div className="absolute inset-0 bg-green-900 bg-opacity-80"></div>
+      <div className="absolute inset-0 bg-green-900 bg-opacity-50"></div> {/* Opacidad reducida */}
 
       {/* Header */}
-      <header className="w-full absolute top-0 left-0 bg-transparent py-4 px-6">
+      <header className="w-full absolute top-0 left-0 bg-transparent py-4 px-6 z-10">
         <div className="container mx-auto flex justify-between items-center text-white">
           <div className="text-2xl font-semibold tracking-wider">DEVIUCOPAY</div>
           <nav className="space-x-6">

@@ -1,1 +1,0 @@
-package co.edu.uco.deviuco.usuarios.domain.pais.rules;

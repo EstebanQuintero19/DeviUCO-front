@@ -56,14 +56,14 @@ export default function Login() {
             <img src="https://placehold.co/150x50" alt="UCO Logo" className="mx-auto" />
           </div>
           <div className="mt-4">
-            <img src="public\assets\LogoSample_ByTailorBrands (3).jpg" alt="Person with card" className="mx-auto rounded-lg" />
+            <img src="" alt="Person with card" className="mx-auto rounded-lg" />
           </div>
         </div>
       </div>
 
       <div className="flex-1 bg-white p-4">
         <div className="flex justify-center mb-4">
-          <img src="/images/logo.png" alt="DeviUCO Pay Logo" />
+          <img src="public\assets\logo.png" alt="DeviUCO Pay Logo" />
         </div>
 
         <form onSubmit={handleLogin} className="space-y-4">

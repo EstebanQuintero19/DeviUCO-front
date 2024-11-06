@@ -10,30 +10,24 @@ export default function Login() {
   const handleLogin = async (event) => {
     event.preventDefault();
 
-    // Verifica que los campos no estén vacíos
     if (!username || !pin) {
       alert('Por favor, complete todos los campos.');
       return;
     }
 
-    const loginData = {
-      numeroCuenta: username,
-      pin: pin,
-    };
+    const loginData = { numeroCuenta: username, pin: pin };
 
     try {
       const response = await fetch('http://localhost:8080/api/v1/cuenta/login', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(loginData),
       });
 
       if (response.ok) {
         const data = await response.json();
         alert('Inicio de sesión exitoso');
-        navigate('/cuenta'); // Redirige a la página de cuenta (asegúrate de tener una ruta configurada)
+        navigate('/cuenta');
       } else if (response.status === 400 || response.status === 404) {
         const errorData = await response.json();
         alert(errorData.mensajes[0]);
@@ -47,51 +41,71 @@ export default function Login() {
   };
 
   return (
-    <div className="flex flex-col md:flex-row border-4 border-purple-500 p-4">
-      <div className="flex-1 bg-green-900 p-4 text-center text-white">
-        <div className="bg-green-700 p-4 rounded-lg">
-          <h1 className="text-4xl font-bold">DeviUCO PAY</h1>
-          <p className="mt-4">¡Tu nuevo aliado en la universidad!</p>
-          <div className="mt-4">
-            <img src="https://placehold.co/150x50" alt="UCO Logo" className="mx-auto" />
-          </div>
-          <div className="mt-4">
-            <img src="" alt="Person with card" className="mx-auto rounded-lg" />
-          </div>
-        </div>
-      </div>
-
-      <div className="flex-1 bg-white p-4">
-        <div className="flex justify-center mb-4">
-          <img src="public\assets\logo.png" alt="DeviUCO Pay Logo" />
+    <div className="min-h-screen flex items-center justify-center bg-cover bg-center"
+         style={{ backgroundImage: "url('/assets/foto-innova-UCO.jpeg')" }}>
+      <div className="flex flex-col md:flex-row max-w-4xl w-full bg-white dark:bg-zinc-900 bg-opacity-95 dark:bg-opacity-95 rounded-lg shadow-xl overflow-hidden">
+        
+        {/* Branding / Information Side */}
+        <div className="flex-1 p-8 bg-green-900 text-white flex flex-col items-center justify-center">
+          <h1 className="text-4xl font-extrabold mb-4">DeviUCO PAY</h1>
+          <p className="text-lg mb-6">¡Tu nuevo aliado en la universidad!</p>
+          <img src="/assets/LogoSample.svg" alt="UCO Logo" className="w-38 h-auto mb-2" />
+          <img src="/assets/foto-innova-UCO.svg" alt="Universidad" className="w-58 h-auto rounded-lg" />
         </div>
 
-        <form onSubmit={handleLogin} className="space-y-4">
-          <div>
-            <label htmlFor="username" className="block text-zinc-700">Usuario</label>
-            <input
-              type="text"
-              id="username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              className="w-full border border-zinc-300 p-2 rounded-lg"
-              required
-            />
+        {/* Login Form Side */}
+        <div className="flex-1 p-8 bg-white dark:bg-zinc-800">
+          <div className="flex justify-center mb-8">
+            <img src="/assets/LogoSample.svg" alt="DeviUCO Pay Logo" className="w-24 h-auto" />
           </div>
-          <div>
-            <label htmlFor="pin" className="block text-zinc-700">Pin de seguridad</label>
-            <input
-              type="password"
-              id="pin"
-              value={pin}
-              onChange={(e) => setPin(e.target.value)}
-              className="w-full border border-zinc-300 p-2 rounded-lg"
-              required
-            />
-          </div>
-          <button type="submit" className="w-full bg-green-700 text-white p-2 rounded-lg">INICIAR SESIÓN</button>
-          <button type="button" onClick={() => navigate('/')} className="w-full bg-green-700 text-white p-2 rounded-lg">INICIO</button>
-        </form>
+
+          <form onSubmit={handleLogin} className="space-y-6">
+            <div>
+              <label htmlFor="username" className="block text-lg font-medium text-zinc-700 dark:text-zinc-300 mb-1">Usuario</label>
+              <input
+                type="text"
+                id="username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                className="w-full border border-zinc-300 dark:border-zinc-600 p-3 rounded-lg shadow-sm focus:ring-2 focus:ring-green-500 dark:bg-zinc-700 dark:text-white"
+                placeholder="Ingresa tu usuario"
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="pin" className="block text-lg font-medium text-zinc-700 dark:text-zinc-300 mb-1">Pin de seguridad</label>
+              <input
+                type="password"
+                id="pin"
+                value={pin}
+                onChange={(e) => setPin(e.target.value)}
+                className="w-full border border-zinc-300 dark:border-zinc-600 p-3 rounded-lg shadow-sm focus:ring-2 focus:ring-green-500 dark:bg-zinc-700 dark:text-white"
+                placeholder="Ingresa tu PIN"
+                required
+              />
+            </div>
+            <button
+              type="submit"
+              className="w-full bg-green-700 text-white py-3 rounded-lg font-semibold shadow-md hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-500"
+            >
+              Iniciar Sesión
+            </button>
+            <button
+              type="button"
+              onClick={() => navigate('/')}
+              className="w-full bg-zinc-700 text-white py-3 rounded-lg font-semibold shadow-md hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-zinc-500 mt-3"
+            >
+              Regresar al Inicio
+            </button>
+            <button
+              type="button"
+              onClick={() => navigate('/deleteAccount')}
+              className="w-full bg-red-600 text-white py-3 rounded-lg font-semibold shadow-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 mt-3"
+            >
+              Eliminar Cuenta
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );

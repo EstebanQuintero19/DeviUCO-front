@@ -5,6 +5,7 @@ import Home from './pages/home';
 import Login from './pages/login';
 import Signup from './pages/signup';
 import Cuenta from './pages/account';
+import DeleteAccount from './pages/deleteAccount';
 
 
 function App() {

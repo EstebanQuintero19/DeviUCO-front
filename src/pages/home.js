@@ -7,7 +7,7 @@ export default function Home() {
     <div 
       className="min-h-screen flex flex-col items-center justify-center relative"
       style={{
-        backgroundImage: "url('/assets/foto-innova-UCO.jpeg')", // Ajusta la extensión según el archivo real
+        backgroundImage: "url('/assets/foto-innova-UCO.jpeg')", 
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}

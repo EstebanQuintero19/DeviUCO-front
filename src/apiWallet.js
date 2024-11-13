@@ -36,3 +36,4 @@ export const getAccounts = async () => {
     throw error;
   }
 };
+

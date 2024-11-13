@@ -5,8 +5,8 @@ import Login from './pages/login';
 import Signup from './pages/signup';
 import Cuenta from './pages/account';
 import DeleteAccount from './pages/deleteAccount';
-import Account from './pages/account';
 import WalletManager from './components/WalletManager';
+import affiliatedRegister from './pages/affiliatedRegister'; 
 
 function App() {
   return (
@@ -17,8 +17,8 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/cuenta" element={<Cuenta />} />
         <Route path="/delete-account" element={<DeleteAccount />} /> 
-        <Route path="/account" element={<Account />} /> 
         <Route path="/wallet" element={<WalletManager />} />
+        <Route path="/register-affiliate" element={<affiliatedRegister />} /> 
       </Routes>
     </Router>
   );

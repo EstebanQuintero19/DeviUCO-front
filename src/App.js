@@ -1,4 +1,3 @@
-// src/App.js
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/home';
@@ -7,6 +6,7 @@ import Signup from './pages/signup';
 import Cuenta from './pages/account';
 import DeleteAccount from './pages/deleteAccount';
 import Account from './pages/account';
+import WalletManager from './components/WalletManager';
 
 function App() {
   return (
@@ -18,6 +18,7 @@ function App() {
         <Route path="/cuenta" element={<Cuenta />} />
         <Route path="/delete-account" element={<DeleteAccount />} /> 
         <Route path="/account" element={<Account />} /> 
+        <Route path="/wallet" element={<WalletManager />} />
       </Routes>
     </Router>
   );

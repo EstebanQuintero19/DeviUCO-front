@@ -1,7 +1,7 @@
 // src/pages/Signup.js
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getTiposDeCuenta, createAccount } from '../services/api';
+import { getTiposDeCuenta, createAccount } from '../api';
 
 export default function Signup() {
     const [idAfiliado, setIdAfiliado] = useState('');
